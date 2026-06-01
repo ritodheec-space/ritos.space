@@ -1,0 +1,268 @@
+/* ================================================================
+   styles.css — Ritodhee Chatterjee personal site
+   ================================================================
+
+   TABLE OF CONTENTS
+   ─────────────────
+   1.  Reset & CSS Variables
+   2.  Base (html, body)
+   3.  Landing Layout
+   4.  Video Block
+   5.  Name Block
+   6.  Blur Overlay
+   7.  Circular Menu — Shell
+   8.  Circular Menu — Items
+   9.  Blank Inner Pages (about / art / projects)
+
+================================================================ */
+
+
+/* ──────────────────────────────────────────────────────────────
+   1. RESET & CSS VARIABLES
+────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Brand colours (taken directly from Figma SVG export) */
+  --c-orange:    #FF7300;
+  --c-pink:      #FF00B7;
+  --c-white:     #ffffff;
+  --c-bg:        #ffffff;
+
+  /* Typography */
+  --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Circle-menu diameter — adjust to taste */
+  --menu-size: 270px;
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   2. BASE
+────────────────────────────────────────────────────────────── */
+html, body {
+  width: 100%;
+  height: 100%;
+  background: var(--c-bg);
+  overflow: hidden;           /* single-screen; wheel events used instead */
+  font-family: var(--font-display);
+  cursor: default;
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   3. LANDING LAYOUT
+────────────────────────────────────────────────────────────── */
+.landing {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   4. VIDEO BLOCK
+   Sits in the upper-right quadrant, matching the Figma frame.
+   Adjust width / height percentages to reframe the crop.
+────────────────────────────────────────────────────────────── */
+.video-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   5. NAME BLOCK
+   Large display text anchored bottom-left, overlapping
+   the lower edge of the video just like the Figma.
+────────────────────────────────────────────────────────────── */
+.name-block {
+  position: absolute;
+  left: 3vw;
+  bottom: 5vh;
+  line-height: 0.88;
+  user-select: none;
+}
+
+.name-line {
+  display: block;
+  font-size: clamp(60px, 18vw, 250px);
+  font-weight: 400;
+  letter-spacing: -1.5px;
+  will-change: transform;
+  transition: transform 0.12s ease-out;
+}
+
+/* Colour zones */
+.c-orange { color: var(--c-orange); }
+.c-pink   { color: var(--c-pink);   }
+
+
+/* ──────────────────────────────────────────────────────────────
+   6. BLUR OVERLAY
+   Full-screen frosted-glass backdrop.
+   backdrop-filter does the blur; brightness darkens.
+   Clicking this overlay dismisses the circle menu.
+────────────────────────────────────────────────────────────── */
+.blur-overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(16px) brightness(0.6);
+  -webkit-backdrop-filter: blur(16px) brightness(0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.38s ease;
+  z-index: 10;
+}
+
+.blur-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Site header — click-to-open menu trigger (non-scroll pages) ── */
+.site-header {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: #111;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 7px 22px;
+  opacity: 0.9;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.site-header:hover { opacity: 1; }
+
+
+/* ──────────────────────────────────────────────────────────────
+   7. CIRCULAR MENU — SHELL
+   Centered fixed, scales in from 85% → 100% when opening.
+────────────────────────────────────────────────────────────── */
+.circle-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.1);
+  width: var(--menu-size);
+  height: var(--menu-size);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.38s ease, transform 0.38s ease;
+  z-index: 20;
+}
+
+.circle-menu.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1.6);
+}
+
+/* SVG broken ring — 4 arcs with gaps at each label position */
+.circle-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   8. CIRCULAR MENU — ITEMS
+   Each link is anchored to a cardinal point on the ring edge.
+────────────────────────────────────────────────────────────── */
+.menu-item {
+  position: absolute;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.menu-item:hover { opacity: 0.5; }
+
+/* Each label is centered exactly at its gap on the ring edge */
+.menu-top    { left: 135px; top: 10px;  transform: translate(-50%, -50%); }
+.menu-right  { left: 265px; top: 135px; transform: translate(-50%, -50%); }
+.menu-bottom { left: 135px; top: 260px; transform: translate(-50%, -50%); }
+.menu-left   { left: 5px;   top: 135px; transform: translate(-50%, -50%); }
+.menu-center { left: 135px; top: 135px; transform: translate(-50%, -50%); pointer-events: none; cursor: default; user-select: none; }
+
+
+/* ──────────────────────────────────────────────────────────────
+   9. BLANK INNER PAGES (about / art / projects)
+   Dark canvas. The circle-menu is included on each page
+   so users can always navigate back.
+────────────────────────────────────────────────────────────── */
+.blank-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: var(--c-bg);
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   10. RESPONSIVE — MOBILE
+────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root { --menu-size: 220px; }
+
+  /* No extra scale on mobile — keep 1:1 so labels stay on-screen */
+  .circle-menu.active {
+    transform: translate(-50%, -50%) scale(1.0);
+  }
+
+  /* Adjust label positions for smaller menu */
+  .menu-top    { left: 110px; top: 8px; }
+  .menu-right  { left: 210px; top: 110px; }
+  .menu-bottom { left: 110px; top: 212px; }
+  .menu-left   { left: 10px;  top: 110px; }
+  .menu-center { left: 110px; top: 110px; }
+
+  /* Larger tap targets */
+  .menu-item { font-size: 13px; padding: 8px; }
+
+  /* Name text slightly smaller floor */
+  .name-line { font-size: clamp(48px, 18vw, 250px); }
+
+  /* Site header bigger for tap */
+  .site-header { font-size: 16px; padding: 8px; }
+}

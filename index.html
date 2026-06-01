@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritodhee Chatterjee</title>
+
+  <!--
+    HOW TO RUN LOCALLY:
+      npx serve .          (recommended — installs nothing permanently)
+      python3 -m http.server 8080
+  -->
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-menu="scroll">
+
+  <!--
+  ═══════════════════════════════════════════════════════════════
+    BLUR OVERLAY
+    Full-screen frosted glass that appears behind the circle
+    menu when it opens. Click it to dismiss the menu.
+  ═══════════════════════════════════════════════════════════════
+  -->
+  <div class="blur-overlay" id="blurOverlay"></div>
+
+  <!--
+  ═══════════════════════════════════════════════════════════════
+    CIRCULAR NAVIGATION MENU
+    Triggered by scrolling / swiping up.
+    Items arranged at the four cardinal points of the ring:
+      .space    → home      (index.html)
+      .about    → about page
+      .art      → art page
+      .projects → projects page
+  ═══════════════════════════════════════════════════════════════
+  -->
+  <nav class="circle-menu" id="circleMenu" aria-label="Site navigation">
+    <!--
+      BROKEN RING — 4 SVG arcs with a gap at each label position.
+      Arc endpoints calculated for r=130, cx=cy=135, gap=32px.
+    -->
+    <svg class="circle-ring" viewBox="0 0 270 270" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke="rgba(255,255,255,0.88)" stroke-width="0.75" fill="none"
+        d="M 170 10  A 130 130 0 0 1 264 119
+           M 264 151 A 130 130 0 0 1 170 260
+           M 100 260 A 130 130 0 0 1 6   151
+           M 6   119 A 130 130 0 0 1 100 10"/>
+    </svg>
+    <a href="index.html"    class="menu-item menu-top">.space</a>
+    <a href="about.html"    class="menu-item menu-bottom">.info</a>
+    <a href="art.html"      class="menu-item menu-right">.art</a>
+    <a href="projects.html" class="menu-item menu-left">.projects</a>
+    <span class="menu-item menu-center">.ritos</span>
+  </nav>
+
+  <!--
+  ═══════════════════════════════════════════════════════════════
+    MAIN LANDING PAGE
+  ═══════════════════════════════════════════════════════════════
+  -->
+  <main class="landing">
+
+    <!--
+      VIDEO ─────────────────────────────────────────────────────
+        DROP your video.mp4 into the  videos/  folder.
+        The video autoplays silently on loop (no controls shown).
+    ──────────────────────────────────────────────────────────── -->
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline>
+        <source src="videos/video.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!--
+      NAME BLOCK ────────────────────────────────────────────────
+        Two lines of large display text anchored to the
+        lower-left, overlapping the bottom edge of the video.
+        Colors taken directly from the Figma SVG export:
+          "Ritodhee"   → #FF7300  (warm orange)
+          "Chatterjee" → #FF00B7  (hot pink / magenta)
+        Each line is a separate element so the cursor-parallax
+        can apply a slightly different offset per line.
+    ──────────────────────────────────────────────────────────── -->
+    <div class="name-block">
+      <div class="name-line" id="nameLine1">
+        <span class="c-orange">Ritodhee</span>
+      </div>
+      <div class="name-line" id="nameLine2">
+        <span class="c-pink">Chatterjee</span>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
