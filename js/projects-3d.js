@@ -23,7 +23,6 @@ var PROJECTS = [
   { name: 'dispenser',      url: 'projects/dispenser.html',      img: 'images/projects/Dispenser.jpg'                     },
   { name: 'timer',          url: 'projects/timer.html',          img: 'images/projects/Timer.png'                         },
   { name: 'knife',          url: 'projects/knife.html',          img: 'images/projects/Fang(knife).jpeg'                  },
-  { name: 'design drawing', url: 'projects/design-drawing.html', img: 'images/projects/Design Drawing.jpeg'                },
   { name: 'CAD',            url: 'projects/cad.html',            img: 'images/projects/CAD.png'                            },
   { name: 'bus app',        url: 'projects/bus-app.html',        img: 'images/projects/Bus.png'                            },
   { name: 'muuto',          url: 'projects/muuto.html',          img: 'images/projects/muuto.png'                         },

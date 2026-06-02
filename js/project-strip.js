@@ -16,7 +16,6 @@ var STRIP_PROJECTS = [
   { name: 'dispenser',      file: 'dispenser.html',      img: '../images/projects/Dispenser.jpg'                },
   { name: 'timer',          file: 'timer.html',          img: '../images/projects/Timer.png'                    },
   { name: 'knife',          file: 'knife.html',          img: '../images/projects/Fang(knife).jpeg'             },
-  { name: 'design drawing', file: 'design-drawing.html', img: '../images/projects/Design Drawing.jpeg'          },
   { name: 'CAD',            file: 'cad.html',            img: '../images/projects/CAD.png'                      },
   { name: 'bus app',        file: 'bus-app.html',        img: '../images/projects/Bus.png'                      },
   { name: 'muuto',          file: 'muuto.html',          img: '../images/projects/muuto.png'                    },
