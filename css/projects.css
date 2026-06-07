@@ -75,7 +75,7 @@
 
 @media (max-width: 768px) {
   .proj-dock { right: 14px; }
-  .proj-dock-item { font-size: 9px; padding: 2px 0; color: #ffffff; }
+  .proj-dock-item { font-size: 15px; padding: 4px 0; color: #ffffff; }
 }
 
 /* ── Projects title ── */
