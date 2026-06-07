@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Ritodhee Chatterjee</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/projects.css">
+</head>
+<body>
+
+  <div class="blur-overlay" id="blurOverlay"></div>
+
+  <nav class="circle-menu" id="circleMenu" aria-label="Site navigation">
+    <svg class="circle-ring" viewBox="0 0 270 270" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke="rgba(255,255,255,0.88)" stroke-width="0.75" fill="none"
+        d="M 170 10  A 130 130 0 0 1 264 119
+           M 264 151 A 130 130 0 0 1 170 260
+           M 100 260 A 130 130 0 0 1 6   151
+           M 6   119 A 130 130 0 0 1 100 10"/>
+    </svg>
+    <a href="index.html"    class="menu-item menu-top">.space</a>
+    <a href="about.html"    class="menu-item menu-bottom">.info</a>
+    <a href="art.html"      class="menu-item menu-right">.art</a>
+    <a href="projects.html" class="menu-item menu-left">.projects</a>
+    <span class="menu-item menu-center">.ritos</span>
+  </nav>
+
+  <!-- Project dock (right side) -->
+  <nav class="proj-dock" id="projDock" aria-label="Project navigation"></nav>
+
+  <main class="projects-page">
+    <canvas id="threeCanvas"></canvas>
+    <div class="proj-tooltip" id="projTooltip"></div>
+    <h1 class="projects-title">Projects</h1>
+  </main>
+
+  <!-- Three.js r128 — served locally, no CDN dependency -->
+  <script src="js/three.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/projects-3d.js"></script>
+  <script>
+    /* ── Project dock ── */
+    (function () {
+      var dock   = document.getElementById('projDock');
+      var BASE   = 13, MAX = 24, RADIUS = 110;
+
+      PROJECTS.forEach(function(p) {
+        var a           = document.createElement('a');
+        a.href          = p.url;
+        a.textContent   = p.name;
+        a.className     = 'proj-dock-item';
+        dock.appendChild(a);
+      });
+
+      var links = Array.from(dock.querySelectorAll('a'));
+
+      dock.addEventListener('mousemove', function(e) {
+        var my = e.clientY;
+        links.forEach(function(link) {
+          var rect = link.getBoundingClientRect();
+          var cy   = rect.top + rect.height / 2;
+          var dist = Math.abs(my - cy);
+          var t    = Math.max(0, 1 - dist / RADIUS);
+          link.style.fontSize = (BASE + (MAX - BASE) * t).toFixed(1) + 'px';
+        });
+      });
+
+      dock.addEventListener('mouseleave', function() {
+        links.forEach(function(link) { link.style.fontSize = ''; });
+      });
+    })();
+  </script>
+
+  <script>
+    /* Surface any uncaught error so a blank page is never silent */
+    window.addEventListener('error', function(e) {
+      document.body.insertAdjacentHTML('beforeend',
+        '<pre style="position:fixed;bottom:0;left:0;right:0;background:#fee;color:#900;padding:12px;font-size:12px;z-index:999;white-space:pre-wrap">'
+        + e.message + '\n' + (e.filename||'') + ':' + e.lineno + '</pre>');
+    });
+  </script>
+</body>
+</html>

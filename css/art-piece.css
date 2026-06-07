@@ -1,0 +1,150 @@
+/* ================================================================
+   art-piece.css — individual artwork pages
+   Shared by all files in /art/*.html
+================================================================ */
+
+/* Allow vertical scrolling on piece pages (overrides styles.css) */
+html, body {
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  height: auto;
+}
+
+/* ── Back link (fixed top-left, pill shaped) ── */
+.piece-back {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 6;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: #111;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 7px 22px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.piece-back:hover { opacity: 1; }
+
+/* ── Main image ── */
+.piece-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0;
+}
+
+/* ── Metadata block (below image) ── */
+/* TO CHANGE SPACING: edit padding values          */
+/* LOCATION: css/art-piece.css  lines below        */
+.piece-meta {
+  padding: 36px 5vw 56px;
+}
+
+/* ── Bottom filmstrip ─────────────────────────────────────────
+   Compact centered strip — 8 thumbnails wide, 3:4 portrait ratio.
+   Scrolls horizontally; the active piece is centred on load.
+
+   TO CHANGE THUMBNAIL WIDTH:      edit 56px in .art-strip-item
+   TO CHANGE HOW MANY ARE VISIBLE: edit the strip width calc below
+   LOCATION: css/art-piece.css  lines below
+──────────────────────────────────────────────────────────────*/
+.art-strip {
+  /* 8 items × 56px + 7 gaps × 4px = 476px */
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  width: 476px;
+  max-width: calc(100vw - 40px);
+  margin: 48px auto 48px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.art-strip::-webkit-scrollbar { display: none; }
+
+.art-strip-item {
+  flex-shrink: 0;
+  display: block;
+  width: 56px;
+  aspect-ratio: 3 / 4;
+  border-radius: 5px;
+  overflow: hidden;
+  opacity: 0.5;
+  transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.art-strip-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.art-strip-item:hover {
+  opacity: 0.85;
+  transform: scale(1.04) translateY(-3px);
+}
+.art-strip-item.active {
+  opacity: 1;
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 0 0 0 2px #111, 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+@media (max-width: 768px) {
+  .piece-back { top: 12px; left: 12px; font-size: 13px; padding: 6px 18px; }
+  .piece-meta { padding: 24px 5vw 40px; }
+
+  /* Strip fixed to bottom */
+  .art-strip {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    z-index: 10;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  .art-strip-item { width: 52px; }
+
+  /* Push page content above fixed strip */
+  body { padding-bottom: 88px; }
+}
+
+/* ── Piece title ── */
+/* TO CHANGE FONT SIZE: edit the clamp() values (min, preferred, max) */
+/* LOCATION: css/art-piece.css  lines 53 – 59                         */
+.piece-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 400;
+  color: #111;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+/* ── Year · Medium line ── */
+/* TO CHANGE COLOR / SIZE: edit color and font-size below  */
+/* LOCATION: css/art-piece.css  lines 64 – 71              */
+.piece-info {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: #999;
+  text-transform: lowercase;
+}

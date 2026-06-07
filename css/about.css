@@ -1,0 +1,97 @@
+/* ================================================================
+   about.css — .info page
+================================================================ */
+
+html, body {
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  height: auto;
+  background: #fff;
+}
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 80px 24px 48px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ── Photo frame ── */
+.about-photo {
+  display: block;
+  width: auto;
+  max-width: min(280px, 80vw);
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* ── Bio text ── */
+.about-bio {
+  text-align: center;
+}
+
+.about-bio p {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  line-height: 1.75;
+  color: #111;
+  margin: 0;
+}
+
+/* ── Contact links ── */
+.about-contact {
+  text-align: center;
+}
+
+.about-contact a {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  line-height: 1.75;
+  color: #111;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.about-contact a:hover { opacity: 0.4; }
+
+/* ── Resume button ── */
+.resume-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #111;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  text-transform: lowercase;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+.resume-btn:hover { opacity: 1; }
+
+.resume-icon {
+  width: 56px;
+  height: 56px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .about-page { padding: 64px 20px 40px; }
+  .about-bio p,
+  .about-contact a { font-size: 15px; }
+}

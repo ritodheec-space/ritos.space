@@ -1,0 +1,96 @@
+/* ================================================================
+   projects.css — 3D Image Universe
+================================================================ */
+
+/* ── Page shell ── */
+.projects-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url('../images/projects/background.JPEG') center center / cover no-repeat;
+}
+
+/* ── Three.js canvas ── */
+#threeCanvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ── Project name tooltip ── */
+.proj-tooltip {
+  position: fixed;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #111;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 4;
+}
+.proj-tooltip.visible { opacity: 1; }
+
+/* ── Project dock (right side, vertically centred) ── */
+.proj-dock {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.proj-dock-item {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+  color: #1a3461;
+  text-decoration: none;
+  text-align: right;
+  text-transform: lowercase;
+  white-space: nowrap;
+  padding: 3px 0;
+  line-height: 1.2;
+  opacity: 0.7;
+  transition: font-size 0.12s ease, opacity 0.12s ease;
+}
+.proj-dock-item:hover { opacity: 1; }
+
+
+@media (max-width: 768px) {
+  .proj-dock { right: 14px; }
+  .proj-dock-item { font-size: 9px; padding: 2px 0; color: #ffffff; }
+}
+
+/* ── Projects title ── */
+.projects-title {
+  position: absolute;
+  bottom: 6vh;
+  left: 2.5vw;
+  font-family: var(--font-display);
+  font-size: 22vw;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.35;
+}
+
