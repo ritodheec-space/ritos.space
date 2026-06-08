@@ -56,8 +56,12 @@
   background: linear-gradient(to left, rgba(255,255,255,0.55) 0%, transparent 80%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);
-  mask-image: linear-gradient(to right, transparent 0%, black 30%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%),
+                      linear-gradient(to right, transparent 0%, black 30%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%),
+              linear-gradient(to right, transparent 0%, black 30%);
+  mask-composite: intersect;
   border-radius: 4px 0 0 4px;
 }
 
