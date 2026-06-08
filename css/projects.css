@@ -53,7 +53,7 @@
   flex-direction: column;
   align-items: flex-end;
   padding: 24px 28px 24px 48px;
-  background: linear-gradient(to left, rgba(0,0,0,0.55) 0%, transparent 100%);
+  background: linear-gradient(to left, rgba(255,255,255,0.55) 0%, transparent 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 4px 0 0 4px;
@@ -79,7 +79,7 @@
 
 
 @media (max-width: 768px) {
-  .proj-dock { right: 14px; }
+  .proj-dock { right: 0; background: linear-gradient(to left, rgba(0,0,0,0.55) 0%, transparent 100%); }
   .proj-dock-item { font-size: 15px; padding: 4px 0; color: #ffffff; }
 }
 
