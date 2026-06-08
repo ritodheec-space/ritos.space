@@ -200,10 +200,10 @@ function init() {
   var tooltip = document.getElementById('artTooltip');
 
   /* Renderer — alpha:true lets the CSS background image show through */
-  renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+  renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0xffffff, 1);
+  renderer.setClearColor(0x000000, 0);
 
   scene  = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 500);
