@@ -17,23 +17,23 @@
    LOCATION: js/projects-3d.js  lines 17 – 36
 ──────────────────────────────────────────────────────────────*/
 var PROJECTS = [
-  { name: 'fashion',        url: 'projects/fashion.html',        img: 'images/projects/Fashion.jpg'                        },
-  { name: 'flatware',       url: 'projects/flatware.html',       img: 'images/projects/flatware.png'                       },
-  { name: 'shelf',          url: 'projects/shelf.html',          img: 'images/projects/Organization (shelf).jpeg'         },
-  { name: 'dispenser',      url: 'projects/dispenser.html',      img: 'images/projects/Dispenser.jpg'                     },
-  { name: 'timer',          url: 'projects/timer.html',          img: 'images/projects/Timer.png'                         },
-  { name: 'knife',          url: 'projects/knife.html',          img: 'images/projects/Fang(knife).jpeg'                  },
-  { name: 'design drawing', url: 'projects/design-drawing.html', img: 'images/projects/Design Drawing.jpeg'                },
-  { name: 'CAD',            url: 'projects/cad.html',            img: 'images/projects/CAD.png'                            },
-  { name: 'bus app',        url: 'projects/bus-app.html',        img: 'images/projects/Bus.png'                            },
-  { name: 'muuto',          url: 'projects/muuto.html',          img: 'images/projects/muuto.png'                         },
-  { name: 'chair',          url: 'projects/chair.html',          img: 'images/projects/Chair.png'                         },
-  { name: 'calculator',     url: 'projects/calculator.html',     img: 'images/projects/Calculator.png'                    },
-  { name: 'booth',          url: 'projects/booth.html',          img: 'images/projects/booth.png'                         },
-  { name: 'train',          url: 'projects/train.html',          img: 'images/projects/lego train.png'                    },
-  { name: 'dragon',         url: 'projects/dragon.html',         img: 'images/projects/Dragon.jpeg'                        },
-  { name: 'flux stove',     url: 'projects/flux-stove.html',     img: 'images/projects/Flux.png'                           },
-  { name: 'mask',           url: 'projects/mask.html',           img: 'images/projects/mask.png'                          },
+  { name: 'fashion',        url: 'projects/fashion.html',        img: 'images/projects/thumbs/Fashion.jpg'                        },
+  { name: 'flatware',       url: 'projects/flatware.html',       img: 'images/projects/thumbs/flatware.png'                       },
+  { name: 'shelf',          url: 'projects/shelf.html',          img: 'images/projects/thumbs/Organization (shelf).jpeg'         },
+  { name: 'dispenser',      url: 'projects/dispenser.html',      img: 'images/projects/thumbs/Dispenser.jpg'                     },
+  { name: 'timer',          url: 'projects/timer.html',          img: 'images/projects/thumbs/Timer.png'                         },
+  { name: 'knife',          url: 'projects/knife.html',          img: 'images/projects/thumbs/Fang(knife).jpeg'                  },
+  { name: 'design drawing', url: 'projects/design-drawing.html', img: 'images/projects/thumbs/Design Drawing.jpeg'                },
+  { name: 'CAD',            url: 'projects/cad.html',            img: 'images/projects/thumbs/CAD.png'                            },
+  { name: 'bus app',        url: 'projects/bus-app.html',        img: 'images/projects/thumbs/Bus.png'                            },
+  { name: 'muuto',          url: 'projects/muuto.html',          img: 'images/projects/thumbs/muuto.png'                         },
+  { name: 'chair',          url: 'projects/chair.html',          img: 'images/projects/thumbs/Chair.png'                         },
+  { name: 'calculator',     url: 'projects/calculator.html',     img: 'images/projects/thumbs/Calculator.png'                    },
+  { name: 'booth',          url: 'projects/booth.html',          img: 'images/projects/thumbs/booth.png'                         },
+  { name: 'train',          url: 'projects/train.html',          img: 'images/projects/thumbs/lego train.png'                    },
+  { name: 'dragon',         url: 'projects/dragon.html',         img: 'images/projects/thumbs/Dragon.jpeg'                        },
+  { name: 'flux stove',     url: 'projects/flux-stove.html',     img: 'images/projects/thumbs/Flux.png'                           },
+  { name: 'mask',           url: 'projects/mask.html',           img: 'images/projects/thumbs/mask.png'                          },
 ];
 
 var N = PROJECTS.length;  // 17
@@ -42,7 +42,7 @@ var N = PROJECTS.length;  // 17
    5 columns × 4 rows = 20 cells, one per project.
    Each cell is CELL×CELL px; images are cropped to fill a circle.
 ──────────────────────────────────────────────────────────────*/
-var COLS = 5, ROWS = 4, CELL = 512;  // 5×4 = 20 cells for 18 projects
+var COLS = 5, ROWS = 4, CELL = 300;  // 5×4 = 20 cells for 18 projects
 var AW = COLS * CELL;   // 2560 px
 var AH = ROWS * CELL;   // 2048 px
 
