@@ -468,7 +468,7 @@ function init() {
     if (phase === 'intro') {
       frm++;
       var t = frm / INTRO;
-      orb.r = 70 - (70 - 28) * (1 - Math.pow(1 - t, 3));  // cubic ease-out
+      orb.r = 70 - (70 - 46) * (1 - Math.pow(1 - t, 3));  // cubic ease-out
       if (frm >= INTRO) phase = 'spin';
     }
 
