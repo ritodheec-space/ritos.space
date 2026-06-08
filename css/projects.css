@@ -85,7 +85,7 @@
 
 
 @media (max-width: 768px) {
-  .proj-dock { right: 0; background: linear-gradient(to left, rgba(0,0,0,0.55) 0%, transparent 80%); }
+  .proj-dock { right: 0; background: linear-gradient(to left, rgba(10,25,70,0.55) 0%, transparent 80%); }
   .proj-dock-item { font-size: 15px; padding: 4px 0; color: #ffffff; }
 }
 
