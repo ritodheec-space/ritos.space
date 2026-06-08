@@ -45,13 +45,16 @@
 /* ── Project dock (right side, vertically centred) ── */
 .proj-dock {
   position: fixed;
-  right: 28px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  padding: 24px 28px 24px 48px;
+  background: linear-gradient(to left, rgba(0,0,0,0.55) 0%, transparent 100%);
+  border-radius: 4px 0 0 4px;
 }
 
 .proj-dock-item {
