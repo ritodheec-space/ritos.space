@@ -24,6 +24,9 @@ const blurOverlay = document.getElementById('blurOverlay');
 const nameLine1   = document.getElementById('nameLine1');
 const nameLine2   = document.getElementById('nameLine2');
 
+const landingVideo = document.querySelector('.video-wrapper video');
+if (landingVideo) landingVideo.playbackRate = 0.65;
+
 const PARALLAX_LINES = [
   nameLine1 && { el: nameLine1, strength: 0.025 },
   nameLine2 && { el: nameLine2, strength: 0.016 },
