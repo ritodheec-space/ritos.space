@@ -26,30 +26,37 @@
     <span class="menu-item menu-center">.ritos</span>
   </nav>
 
-  <!-- Project dock (right side) -->
+  <!-- Project dock (centered) -->
   <nav class="proj-dock" id="projDock" aria-label="Project navigation"></nav>
 
   <main class="projects-page">
-    <canvas id="threeCanvas"></canvas>
-    <div class="proj-tooltip" id="projTooltip"></div>
-    <h1 class="projects-title">Projects</h1>
+    <div class="projects-bg" id="projectsBg"></div>
   </main>
 
-  <!-- Three.js r128 — served locally, no CDN dependency -->
-  <script src="js/three.min.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/projects-3d.js"></script>
+  <script src="js/projects-data.js"></script>
   <script>
     /* ── Project dock ── */
     (function () {
       var dock   = document.getElementById('projDock');
-      var BASE   = 13, MAX = 24, RADIUS = 110;
+      var bg     = document.getElementById('projectsBg');
+      var BASE   = 15, MAX = 27, RADIUS = 110;
 
       PROJECTS.forEach(function(p) {
         var a           = document.createElement('a');
         a.href          = p.url;
         a.textContent   = p.name;
         a.className     = 'proj-dock-item';
+        if (p.img) {
+          new Image().src = p.img;
+          a.addEventListener('mouseenter', function() {
+            bg.style.backgroundImage = 'url("' + p.img + '")';
+            bg.classList.add('active');
+          });
+          a.addEventListener('mouseleave', function() {
+            bg.classList.remove('active');
+          });
+        }
         dock.appendChild(a);
       });
 
