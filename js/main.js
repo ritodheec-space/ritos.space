@@ -33,7 +33,6 @@ const PARALLAX_LINES = [
 ].filter(Boolean);
 
 const ringPath   = circleMenu && circleMenu.querySelector('.circle-ring path');
-const ritosEl    = circleMenu && circleMenu.querySelector('.menu-center');
 const topLabel   = circleMenu && circleMenu.querySelector('.menu-top');
 const rightLabel = circleMenu && circleMenu.querySelector('.menu-right');
 const botLabel   = circleMenu && circleMenu.querySelector('.menu-bottom');
